@@ -1,24 +1,26 @@
 ![pgeno](logo.svg)
 ## pgeno
+
 Pgeno is a multithreaded genotyping program based on k-mer detection in FASTQ data. Given a small, specially annotated fasta file for reference, Pgeno will compile RegEx phrases to search for k-mers of a user-defined length within reads of the provided fastq-formatted dataset.
 
-The resulting output will be the determined genotype of each sample based on the number of detected sequences between the k-mers. This output can then be interpreted to determine the presence or absence of a specific allele or haplotype.
+The resulting output will be the calculated genotype of each sample based on the number of detected sequences between positively identified k-mers. This output can then be interpreted to determine the presence or absence of a specific allele or haplotype.
 
 #### What's a k-mer?
+
 A `k-mer` is a sequence of DNA of length `k`. For example, `GATC` is a "4-mer" because it's a sequence of length 4.
 
 Any given sequence of DNA can be arbitrarily broken into several combinations of sequences of varying lengths.
 
-`GATC`'s' k-mers:
+`GATC`'s k-mers:
 
-k | k-mers
-- | ------
+k | k-mers 
+----- | ----
 1 | G, A, T, C
 2 | GA, AT, TC
 3 | GAT, ATC
 4 | GATC
 
-As demonstrated in the table above, longer k-mers in a given sequence are less abundant than shorter k-mers.
+As seen in the table above, longer k-mers in a given sequence are less abundant than shorter k-mers.
 
 *Generally speaking*, a k-mer of sufficient length is enough to identify a certain location in a genome. A PCR primer is a good example of this.
 
