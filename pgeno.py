@@ -13,7 +13,7 @@ from Bio.Seq import Seq
 import regex
 
 
-def bundle_gen(data_files: Iterable[Path], tag_data: dict) -> Tuple[str, Seq, dict]:
+def bundle_gen(data_files: Iterable[Path], tag_data: dict) -> Iterable[Tuple[str, Seq, dict]]:
     ''' Generator which yields one sample bundled with the tag data at a time.'''
     for data_file in data_files:
         sample_name = str(data_file.name).rstrip(data_file.suffix)
@@ -81,7 +81,7 @@ def record_intermediate(directory: Path, data_record: dict, allele_set: set) -> 
             for tag_id, result in results.items():
                 writer.writerow(result)
 
-def tags_from_fasta(fasta_file: Path, tag_len: int, tolerance: int) -> tuple:
+def tags_from_fasta(fasta_file: Path, tag_len: int, tolerance: int) -> Iterable[tuple]:
     ''' Given a specially annotated `fasta_file`, returns a tuple containing
     `tag_len`-length k-mers compiled into regular expressions which may
     additionally support `tolerance` number of replacements to allow for
