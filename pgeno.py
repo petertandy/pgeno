@@ -121,7 +121,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data_arg = args.data
-    tags_arg = args.loci
+    tags_arg = args.locus
     out_dir = args.out
     tag_len = args.kmerlength
     min_reads = args.minreads
